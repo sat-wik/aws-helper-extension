@@ -73,8 +73,7 @@ def main():
     faiss_index_file = "faiss_index.idx"
 
     # Cohere API key (replace with your actual API key)
-    cohere_api_key = "6oBYLB9PXKJfyLK4mTVGW5ReMxhYamXLwQWwl5bR"
-    cohere_client = cohere.Client(cohere_api_key)
+    cohere_client = cohere.Client(COHERE_API_KEY)
 
     # Load data
     print("Loading data...")

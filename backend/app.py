@@ -4,7 +4,6 @@ from pydantic import BaseModel
 import cohere
 
 # Initialize Cohere client
-COHERE_API_KEY = "6oBYLB9PXKJfyLK4mTVGW5ReMxhYamXLwQWwl5bR"  # Replace with your API key
 co = cohere.Client(COHERE_API_KEY)
 
 # Initialize FastAPI app
