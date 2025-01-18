@@ -5,6 +5,8 @@ declare module "@heroicons/react/24/solid" {
   
     export const PaperAirplaneIcon: React.FC<IconProps>;
     export const ChatBubbleLeftIcon: React.FC<IconProps>;
+    export const SunIcon: React.FC<IconProps>;
+    export const MoonIcon: React.FC<IconProps>;
     // Add more icons as needed
   }
   

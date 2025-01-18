@@ -28,7 +28,12 @@ class QueryRequest(BaseModel):
 def read_root():
     """Root endpoint to handle default requests."""
     return {"message": "Welcome to the AWS Helper API! Use /api/query for queries."}
-    
+
+@app.get("/health")
+async def health_check():
+    return {"status": "ok"}
+
+
 @app.get("/favicon.ico", include_in_schema=False)
 def favicon():
     """Serve an empty response for favicon requests."""

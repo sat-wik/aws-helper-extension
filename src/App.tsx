@@ -1,34 +1,41 @@
 import React, { useState, useRef, useEffect } from "react";
-import { PaperAirplaneIcon, ChatBubbleLeftIcon } from "@heroicons/react/24/solid";
-
+import {
+  PaperAirplaneIcon,
+  ChatBubbleLeftIcon,
+  MoonIcon,
+  SunIcon,
+} from "@heroicons/react/24/solid";
 
 const App: React.FC = () => {
   const [messages, setMessages] = useState<{ type: string; text: string }[]>([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
-  const [darkMode, setDarkMode] = useState(false); // Dark mode toggle state
+  const [darkMode, setDarkMode] = useState(false);
   const chatRef = useRef<HTMLDivElement>(null);
 
   const handleSend = async () => {
     if (!input.trim()) return;
-  
+
     setMessages([...messages, { type: "user", text: input }]);
     setLoading(true);
-  
+
     try {
-      const response = await fetch("https://aws-helper-extension.onrender.com/api/query", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ input }),
-      });
-  
+      const response = await fetch(
+        "https://aws-helper-extension.onrender.com/api/query",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ input }),
+        }
+      );
+
       const data = await response.json();
       const botMessage = data.response;
-  
+
       setMessages((prev) => [...prev, { type: "bot", text: botMessage }]);
-  
+
       // Extract CSS selector for highlighting
       const regex = /Selector for button: (#[a-zA-Z0-9-_]+)/;
       const match = botMessage.match(regex);
@@ -46,7 +53,14 @@ const App: React.FC = () => {
       setInput("");
     }
   };
-  
+
+  // Handle Enter key to send the query
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault(); // Prevents adding a new line
+      handleSend();
+    }
+  };
 
   useEffect(() => {
     if (chatRef.current) {
@@ -61,15 +75,21 @@ const App: React.FC = () => {
       }`}
     >
       {/* Header with Dark Mode Toggle */}
-      <div className={`p-3 flex justify-between items-center bg-gray-100 text-white font-bold ${
-        darkMode ? "bg-gray-900" : "bg-gray-100"
-      }`}>
+      <div
+        className={`p-3 flex justify-between items-center ${
+          darkMode ? "bg-gray-900 text-white" : "bg-gray-100 text-black"
+        }`}
+      >
         <span></span>
         <button
           onClick={() => setDarkMode(!darkMode)}
-          className="text-sm p-2 rounded-md bg-zinc-700 hover:bg-zinc-400 active:bg-zinc-700"
+          className="p-2 rounded-full"
         >
-          {darkMode ? "Light Mode" : "Dark Mode"}
+          {darkMode ? (
+            <SunIcon className="h-6 w-6 text-yellow-400" />
+          ) : (
+            <MoonIcon className="h-6 w-6 text-gray-600" />
+          )}
         </button>
       </div>
 
@@ -120,6 +140,7 @@ const App: React.FC = () => {
         <textarea
           value={input}
           onChange={(e) => setInput(e.target.value)}
+          onKeyDown={handleKeyDown} // Attach the keydown handler
           placeholder="Ask about AWS..."
           className={`flex-grow p-3 rounded-lg resize-none ${
             darkMode
