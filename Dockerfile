@@ -5,10 +5,12 @@ FROM python:3.11-slim
 WORKDIR /app
 
 # Copy files to the container
-COPY . .
+COPY backend/requirements.txt requirements.txt
 
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
 
 # Expose port 8000
 EXPOSE 8000

@@ -3,7 +3,7 @@
   "name": "AWS Helper",
   "version": "1.0",
   "description": "Chat assistant for AWS using free LLM and webpage interactions.",
-  "permissions": ["scripting", "activeTab", "storage"],
+  "permissions": ["scripting", "activeTab", "storage", "https://aws-helper-extension.onrender.com/*"],
   "host_permissions": ["<all_urls>"],
   "action": {
     "default_popup": "popup.html",
