@@ -1,0 +1,62 @@
+# Python-specific
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Virtual environment
+venv/
+env/
+
+# Node.js-specific
+node_modules/
+
+# Logs
+*.log
+*.out
+*.err
+
+# MacOS-specific
+.DS_Store
+
+# FAISS Index and Embedding files
+*.idx
+
+# Build outputs
+dist/
+build/
+
+# IDE-specific
+.vscode/
+.idea/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# NPM/Yarn package lock files (optional based on preference)
+package-lock.json
+yarn.lock
+
+# Cache
+.cache/
+.npm/
+
+# Compiled JavaScript files
+*.js.map
+
+# Temporary files
+*.tmp
+*.swp
+*.swo
+*.bak
+*.old
+
+# Generated configuration files
+*.config.js
+*.config.json
+
+# Tailwind-generated files
+tailwind.config.js
+postcss.config.js
