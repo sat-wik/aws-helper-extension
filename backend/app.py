@@ -24,6 +24,17 @@ app.add_middleware(
 class QueryRequest(BaseModel):
     input: str
 
+@app.get("/")
+def read_root():
+    """Root endpoint to handle default requests."""
+    return {"message": "Welcome to the AWS Helper API! Use /api/query for queries."}
+    
+@app.get("/favicon.ico", include_in_schema=False)
+def favicon():
+    """Serve an empty response for favicon requests."""
+    return {"message": "No favicon available"}
+
+
 # Endpoint for querying
 @app.post("/api/query")
 async def query(request: QueryRequest):
