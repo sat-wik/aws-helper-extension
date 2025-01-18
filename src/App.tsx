@@ -16,7 +16,7 @@ const App: React.FC = () => {
     setLoading(true);
   
     try {
-      const response = await fetch("https://aws-helper-extension.onrender.com/api/query", {
+      const response = await fetch("http://127.0.0.1:8000/api/query", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
