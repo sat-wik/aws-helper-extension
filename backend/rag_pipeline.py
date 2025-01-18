@@ -4,6 +4,7 @@ import numpy as np
 import faiss
 import time
 from tqdm import tqdm
+import os
 
 # Load scraped data from JSON file
 def load_data(file_path):
@@ -73,6 +74,7 @@ def main():
     faiss_index_file = "faiss_index.idx"
 
     # Cohere API key (replace with your actual API key)
+    COHERE_API_KEY = os.getenv("COHERE_API_KEY")
     cohere_client = cohere.Client(COHERE_API_KEY)
 
     # Load data
