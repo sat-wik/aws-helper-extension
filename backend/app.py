@@ -27,7 +27,7 @@ class QueryRequest(BaseModel):
 @app.get("/")
 def read_root():
     """Root endpoint to handle default requests."""
-    return {"message": "Welcome to the AWS Helper API! Use /api/query for queries."}
+    return {"message": "Welcome to the NimbusAI API! Use /api/query for queries."}
 
 @app.get("/health")
 async def health_check():

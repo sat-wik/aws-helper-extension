@@ -11,7 +11,7 @@ export default defineConfig({
     createHtmlPlugin({
       inject: {
         data: {
-          title: "AWS Helper",
+          title: "NimbusAI",
         },
       },
     }),

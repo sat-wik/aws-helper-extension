@@ -1,4 +1,4 @@
 chrome.runtime.onInstalled.addListener(() => {
-    console.log("AWS Helper Extension Installed!");
+    console.log("NimbusAI Extension Installed!");
   });
   
